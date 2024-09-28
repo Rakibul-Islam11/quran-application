@@ -1,29 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cupcake">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/fontawesome.min.css"
+            integrity="sha512-B46MVOJpI6RBsdcU307elYeStF2JKT87SsHZfRSkjVi4/iZ3912zXi45X5/CBr/GbCyLx6M1GQtTKYRd52Jxgw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-
-    <label for="inpt">type sura name</label>
-    <input id="inpt" type="text" placeholder="enter a sura number">
-    <button id="btn">search</button>
-    <div id="audioParent"></div>
-    <div id="suraName"></div>
-    <div id="suraTafsir"></div>
-    <div id="suraInfo">
-        <p id="ayahNo"></p>
-        <p id="juz"></p>
-        <p id="munjil"></p>
-        <p id="ruku"></p>
-        <p id="sajda"></p>
-
+<section class="sec_main_cus">
+    <div class="pt-6">
+        <nav class=" nav_cus w-80 h-16 rounded-xl bg-gray-300 m-auto shadow-xl">
+            <a href=""><svg class="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path
+                        d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
+                </svg></a>
+            <a href="http://209.126.120.153/hls/asiantv.m3u8" target="_blank" class=" bg-red-500 px-3 py-2 rounded-lg">🔴
+                Live Radio</a>
+            <a href="http://209.126.120.153/hls/asiantv.m3u8" target="_blank" class=" bg-red-500 px-3 py-2 rounded-lg">🔴
+                Live TV</a>
+        </nav>
+    </div>
+    
+    <div class="heading_cus text-center pt-10">
+            <h1 class="blink text-3xl font-bold text-blue-600 ">Search Sura to Listen with Tafsir</h1>
+    </div>
+    <div class="inpt_cus m-auto text-center pt-2">
+        <input id="inpt" type="text" placeholder="Type Sura Number"
+            class=" w-full input input-bordered input-success max-w-xs m-auto text-center" />
+            
+    </div>  
+    <div class="btn_cus m-auto text-center pt-5">
+        <button id="btn" class="btn btn-outline btn-accent rounded-sm ">Search</button>
     </div>
 
+<div class="output_parrent m-auto">
+    
+<div class="audio_and_name_cus flex items-center gap-9 justify-center">
+    <div id="audioParent"></div>
+    <div id="suraName"></div>
+</div>
+<div class="tafsir_cus text-center pt-3 ">
+    <div id="suraTafsir"></div>
+</div>
 
+<div class="sura_info_cus flex flex-column justify-center items-center fixed bottom-0 left-0 w-full p-4">
+    <p id="ayahNo"></p>
+    <p id="juz"></p>
+    <p id="munjil"></p>
+    <p id="ruku"></p>
+    <p id="sajda"></p>
+</div>
+
+    </div>
+</section>
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="app.js"></script>
 </body>
 </html>

@@ -57,20 +57,21 @@ function apiData(recData1, recData2) {
             //sura audio play section
             catchAudioParent.innerHTML = `<audio id="adio" src="${finalData1.data.ayahs[audioCountFlag].audio}" controls autoplay></audio>`
             //sura name
-            catchSuraName.innerHTML = `<h2>সুরা নাম ${finalData2.data.englishName}</h2>`
+            catchSuraName.innerHTML = `<h2 class = "text-white font-bold">সুরা নাম ${finalData2.data.englishName}</h2>`
             //sura tafsir print section
-            catchSuraTafsir.innerHTML = `<h2>${finalData2.data.ayahs[audioCountFlag].text}</h2>`
+            catchSuraTafsir.innerHTML = `<h2 class = "text-red-400 text-3xl ">${finalData2.data.ayahs[audioCountFlag].text}</h2>`
             //sura info print section
             // ayah count
-            catchAyahNo.innerHTML = `আয়াত নং ${recData2.data.ayahs[audioCountFlag].numberInSurah}` 
+            catchAyahNo.innerHTML = `<button class="text-white font-bold border border-accent rounded-sm px-4 py-2">আয়াত নং ${recData2.data.ayahs[audioCountFlag].numberInSurah}</button>`
+
             //juz
-            catchJuz.innerHTML = `পারা ${recData2.data.ayahs[audioCountFlag].juz}`
+            catchJuz.innerHTML = ` <button class="text-white font-bold border border-accent rounded-sm px-4 py-2">পারা ${recData2.data.ayahs[audioCountFlag].juz}</button>`
             //manzil
-            catchMuljil.innerHTML = `মঞ্জিল ${recData2.data.ayahs[audioCountFlag].manzil}`
+            catchMuljil.innerHTML = `<button class="text-white font-bold border border-accent rounded-sm px-4 py-2">মঞ্জিল ${recData2.data.ayahs[audioCountFlag].manzil}</button>`
             //ruku
-            catchRuku.innerHTML = `রুকু ${recData2.data.ayahs[audioCountFlag].ruku}`
+            catchRuku.innerHTML = `<button class="text-white font-bold border border-accent rounded-sm px-4 py-2">রুকু ${recData2.data.ayahs[audioCountFlag].ruku} </button>`
             //sajda
-            catchSajda.innerHTML = `${recData2.data.ayahs[audioCountFlag].sajda ? "কোনো সেজদা আয়াত আছে" : "সেজদা আয়াত নাই"}`
+            catchSajda.innerHTML = ` <button class="text-white font-bold border border-accent rounded-sm px-4 py-2">${recData2.data.ayahs[audioCountFlag].sajda ? "কোনো সেজদা আয়াত আছে" : "সেজদা আয়াত নেই"}</button>`
 
 
 
