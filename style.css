@@ -17,6 +17,9 @@
     align-items: center;
     justify-content: center;    
 }
+.modal-box {
+    max-width: 63rem;
+}
 .inpt_cus, .btn_cus {
     width: 50%;
 }

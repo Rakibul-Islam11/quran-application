@@ -26,25 +26,19 @@
                     </a>
                     <a href="http://209.126.120.153/hls/asiantv.m3u8" target="_blank"
                         class="bg-red-500 px-3 py-2 rounded-lg">🔴 Live Radio</a>
-                    <!-- <a id="tvOne" href="" class="bg-red-500 px-3 py-2 rounded-lg" >🔴 Live TV</a> -->
-                    <button class="btn bg-red-500 px-3 py-2 rounded-lg" onclick="my_modal_4.showModal()">🔴 Live TV</button>
+
+                    <button class="btn bg-slate-400 px-3 py-1 rounded-lg" onclick="my_modal_3.showModal()">🔴 Live TV</button>
                 </nav>
             </div>
 <!--modal start-->
-
-<dialog id="my_modal_4" class="modal">
-    <div class="modal-box w-11/12 max-w-5xl">
-        <!-- <h3 class="text-lg font-bold">Hello!</h3> -->
+<dialog id="my_modal_3" class="modal">
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
         <video id="videoPlayer" controls style="width: 100%; height: auto;"></video>
-        <div class="modal-action">
-            <form method="dialog">
-                <!-- if there is a button, it will close the modal -->
-                <button class="btn">Close</button>
-            </form>
-        </div>
     </div>
 </dialog>
-
 <!--modal end-->
             <div class="heading_cus text-center pt-10">
                 <h1 class="blink text-3xl font-bold text-blue-600">Search Sura to Listen with Tafsir</h1>
@@ -98,6 +92,17 @@
             } else {
                 alert('Your browser does not support HLS streaming.');
             }
+          
+                const modal = document.getElementById('my_modal_3');
+                const videoPlayer = document.getElementById('videoPlayer');
+
+                // মডাল বন্ধ হলে ভিডিও বন্ধ করতে হবে
+                modal.addEventListener('close', () => {
+                    videoPlayer.pause();
+                    //আবার যদি শুরু হয় জেনো প্রথম থেকে start হয়
+                    videoPlayer.currentTime = 0;
+                });
+
         </script>
     </body>
 
