@@ -30,7 +30,7 @@ function inptValidatio() {
 }
 function resApi(recgetInptValue) {
     let getInput = recgetInptValue
-    const api1 = fetch(`http://api.alquran.cloud/v1/surah/${getInput}/ar.alafasy`);
+    const api1 = fetch(`https://api.alquran.cloud/v1/surah/${getInput}/ar.alafasy`);
     const api2 = fetch(`https://api.alquran.cloud/v1/surah/${getInput}/bn.bengali`);
 
     Promise.all([api1, api2])
