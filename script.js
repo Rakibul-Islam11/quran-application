@@ -10,7 +10,10 @@ let catchMuljil = document.getElementById("munjil");
 let catchRuku = document.getElementById("ruku");
 let catchSajda = document.getElementById("sajda");
 let catchSuraName = document.getElementById("suraName");
-
+//for the tv
+// const video = document.getElementById('videoPlayer');
+// let catchTv = document.getElementById("tvOne")
+// const m3u8Url = 'https://dzkyvlfyge.erbvr.com/PeaceTvBangla/index.m3u8';
 
 function inptValidatio() {
     let getInptValue = catchInput.value; 
@@ -84,6 +87,27 @@ function apiData(recData1, recData2) {
     forAdioWork()
 }
 
+
 catchBtn.addEventListener('click', function () {
     inptValidatio()
 });
+
+// // HLS সমর্থন করে কিনা তা চেক করুন এবং ভিডিও চালান
+// function tvFunc() {
+//     if (Hls.isSupported()) {
+//         const hls = new Hls();
+//         hls.loadSource(m3u8Url);
+//         hls.attachMedia(video);
+//         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+//     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+//         video.src = m3u8Url;
+//         video.addEventListener('loadedmetadata', () => video.play());
+//     } else {
+//         alert('Your browser does not support HLS streaming.');
+//     }
+// }
+
+
+// catchTv.addEventListener("click", function () {
+//     tvFunc()
+// })
