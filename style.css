@@ -40,3 +40,14 @@
     width: 50%;
     
 }
+
+@media only screen and (max-width: 1180px){
+    .nav_cus {
+        width: 415px !important;
+    }
+}
+@media only screen and (max-width: 590px){
+    .sec_main_cus {
+        height: fit-content !important;
+    }
+}
