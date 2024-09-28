@@ -47,9 +47,7 @@ function apiData(recData1, recData2) {
     let curentAudoLength = finalData1.data.ayahs.length;
     let curentTafsirLength = recData2.data.ayahs.length;
     
-    
-    
-    
+
     let audioCountFlag = 0;
     function forAdioWork() {
         
@@ -72,9 +70,6 @@ function apiData(recData1, recData2) {
             catchRuku.innerHTML = `<button class="text-white font-bold border border-accent rounded-sm px-4 py-2">রুকু ${recData2.data.ayahs[audioCountFlag].ruku} </button>`
             //sajda
             catchSajda.innerHTML = ` <button class="text-white font-bold border border-accent rounded-sm px-4 py-2">${recData2.data.ayahs[audioCountFlag].sajda ? "কোনো সেজদা আয়াত আছে" : "সেজদা আয়াত নেই"}</button>`
-
-
-
 
 
             let catchAudio = document.getElementById('adio');
