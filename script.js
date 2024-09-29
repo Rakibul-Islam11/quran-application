@@ -10,10 +10,7 @@ let catchMuljil = document.getElementById("munjil");
 let catchRuku = document.getElementById("ruku");
 let catchSajda = document.getElementById("sajda");
 let catchSuraName = document.getElementById("suraName");
-//for the tv
-// const video = document.getElementById('videoPlayer');
-// let catchTv = document.getElementById("tvOne")
-// const m3u8Url = 'https://dzkyvlfyge.erbvr.com/PeaceTvBangla/index.m3u8';
+let catchloaderForTafsir = document.getElementById("loaderForTafsir");
 
 function inptValidatio() {
     let getInptValue = catchInput.value; 
@@ -25,32 +22,33 @@ function inptValidatio() {
     } else if (getInptValue <= 114) {
         resApi(getInptValue);
         
-        
     }
     else {
         alert('please enter sura name between 1 to 114')
     }
 }
 function resApi(recgetInptValue) {
+    catchloaderForTafsir.style.display = 'block';
     let getInput = recgetInptValue
     const api1 = fetch(`https://api.alquran.cloud/v1/surah/${getInput}/ar.alafasy`);
     const api2 = fetch(`https://api.alquran.cloud/v1/surah/${getInput}/bn.bengali`);
+    const api3 = fetch(` `)
 
     Promise.all([api1, api2])
         .then(recponses => Promise.all(recponses.map(rec => rec.json())))
-        .then(data => apiData(data[0], data[1]))
+        .then(data => {
+            apiData(data[0], data[1])
+            catchloaderForTafsir.style.display = 'none';
+        })
     
 }
 function apiData(recData1, recData2) {
     let finalData1 = recData1;
     let finalData2 = recData2
-    console.log(recData1);
-    console.log(recData2);
-    
+
     let curentAudoLength = finalData1.data.ayahs.length;
     let curentTafsirLength = recData2.data.ayahs.length;
     
-
     let audioCountFlag = 0;
     function forAdioWork() {
         
@@ -87,27 +85,75 @@ function apiData(recData1, recData2) {
     forAdioWork()
 }
 
-
 catchBtn.addEventListener('click', function () {
     inptValidatio()
 });
 
-// // HLS সমর্থন করে কিনা তা চেক করুন এবং ভিডিও চালান
-// function tvFunc() {
-//     if (Hls.isSupported()) {
-//         const hls = new Hls();
-//         hls.loadSource(m3u8Url);
-//         hls.attachMedia(video);
-//         hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-//     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-//         video.src = m3u8Url;
-//         video.addEventListener('loadedmetadata', () => video.play());
-//     } else {
-//         alert('Your browser does not support HLS streaming.');
-//     }
-// }
+// for radio start
+let catchRAdio = document.getElementById("forRADIO");
+let catchforUtptRadio = document.getElementById("forUtptRadio");
+let catchmy_modal_4 = document.getElementById("my_modal_4");
+let loader = document.getElementById("loader"); 
+
+function resRaioApi() {
+    
+    loader.style.display = 'block';
+
+    fetch('https://mp3quran.net/api/v3/radios?language=eng')
+        .then(res => res.json())
+        .then(data => {
+            setRadio(data);
+            
+            loader.style.display = 'none';
+        })
+        .catch(err => {
+            if ( err ) {
+                alert("some error maybe happend ")
+            }
+            
+            loader.style.display = 'none';
+        });
+}
+
+function setRadio(resRadioData) {
+    let finalRadioDat = resRadioData;
+
+    catchforUtptRadio.innerHTML = `<audio id="gg" src="${finalRadioDat.radios[11].url}" controls autoplay></audio>`;
+    let ggg = document.getElementById("gg");
+    catchmy_modal_4.addEventListener("close", function () {
+        ggg.pause();
+    });
+}
+
+catchRAdio.addEventListener("click", function () {
+    resRaioApi();
+});
 
 
-// catchTv.addEventListener("click", function () {
-//     tvFunc()
-// })
+//for tv start
+let catchTv = document.getElementById("forTv");
+const modal = document.getElementById('my_modal_3');
+const videoPlayer = document.getElementById('videoPlayer');
+const video = document.getElementById('videoPlayer');
+const m3u8Url = 'https://dzkyvlfyge.erbvr.com/PeaceTvBangla/index.m3u8';
+
+function tvFunc() {
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(m3u8Url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = m3u8Url;
+        video.addEventListener('loadedmetadata', () => video.play());
+    } else {
+        alert('Your browser does not support HLS streaming.');
+    }
+
+}
+catchTv.addEventListener("click", function () {
+    tvFunc()
+})
+modal.addEventListener("close", function () {
+    videoPlayer.pause()
+})

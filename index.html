@@ -24,14 +24,16 @@
                                 d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
                         </svg>
                     </a>
-                    <a href="http://209.126.120.153/hls/asiantv.m3u8" target="_blank"
-                        class="bg-red-500 px-3 py-2 rounded-lg">🔴 Live Radio</a>
-
-                    <button class="btn bg-slate-400 px-3 py-1 rounded-lg" onclick="my_modal_3.showModal()">🔴 Live TV</button>
+                    
+                    <button id="forRADIO" class="btn bg-slate-400 px-3 py-1 rounded-lg" onclick="my_modal_4.showModal()">🔴 Live Radio</button>
+                    <button id="forTv"  class="btn bg-slate-400 px-3 py-1 rounded-lg" onclick="my_modal_3.showModal()">🔴 Live TV</button>
                 </nav>
             </div>
+
+
 <!--modal start-->
 <dialog id="my_modal_3" class="modal">
+    
     <div class="modal-box">
         <form method="dialog">
             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -40,6 +42,23 @@
     </div>
 </dialog>
 <!--modal end-->
+<!--modal for raido start-->
+
+
+<dialog id="my_modal_4" class="modal">
+    
+    <div class="modal-box">
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-lg font-bold">You are listening non-stop quran radio!</h3>
+        
+        <div id="forUtptRadio">
+            <div id="loader" class="loading loading-bars loading-lg" style="display: none;"></div>
+        </div>
+    </div>
+</dialog>
+<!--modal for radio end-->
             <div class="heading_cus text-center pt-10">
                 <h1 class="blink text-3xl font-bold text-blue-600">Search Sura to Listen with Tafsir</h1>
             </div>
@@ -52,14 +71,18 @@
             </div>
 <!--output section start-->
             <div class="output_parrent m-auto">
+                <!--loader start-->
+                <div id="loaderForTafsir" class="loading loading-bars loading-lg text-center" style="display: none;"></div>
+                <!--loader end-->
                 <div class="audio_and_name_cus flex items-center gap-9 justify-center">
                     <div id="audioParent"></div>
                     <div id="suraName"></div>
                 </div>
                 <div class="tafsir_cus text-center pt-3">
                     <div id="suraTafsir"></div>
+                   
                 </div>
-
+                
                 <div
                     class="sura_info_cus flex flex-column justify-center items-center fixed bottom-0 left-0 w-full p-4">
                     <p id="ayahNo"></p>
@@ -75,35 +98,6 @@
         <script src="script.js"></script>
 
 
-
-        <script>
-            const video = document.getElementById('videoPlayer');
-            const m3u8Url = 'https://dzkyvlfyge.erbvr.com/PeaceTvBangla/index.m3u8';
-
-            // HLS সমর্থন করে কিনা তা চেক করুন এবং ভিডিও চালান
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(m3u8Url);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = m3u8Url;
-                video.addEventListener('loadedmetadata', () => video.play());
-            } else {
-                alert('Your browser does not support HLS streaming.');
-            }
-          
-                const modal = document.getElementById('my_modal_3');
-                const videoPlayer = document.getElementById('videoPlayer');
-
-                // মডাল বন্ধ হলে ভিডিও বন্ধ করতে হবে
-                modal.addEventListener('close', () => {
-                    videoPlayer.pause();
-                    //আবার যদি শুরু হয় জেনো প্রথম থেকে start হয়
-                    videoPlayer.currentTime = 0;
-                });
-
-        </script>
     </body>
 
 </html>
